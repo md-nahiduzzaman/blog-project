@@ -10,5 +10,16 @@ blogRouter.post(
   auth(USER_ROLE.admin, USER_ROLE.user),
   blogController.createBlog,
 );
+blogRouter.patch(
+  '/:id',
+  auth(USER_ROLE.admin, USER_ROLE.user),
+  blogController.updateBlog,
+);
+blogRouter.delete(
+  '/:id',
+  auth(USER_ROLE.admin, USER_ROLE.user),
+  blogController.deleteBlog,
+);
+blogRouter.get('/', blogController.getBlogs);
 
 export default blogRouter;

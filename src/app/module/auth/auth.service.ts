@@ -2,7 +2,6 @@ import config from '../../config';
 import { IUser } from '../user/user.interface';
 import User from '../user/user.model';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import { createToken } from './auth.utils';
 
 const register = async (payload: IUser) => {
