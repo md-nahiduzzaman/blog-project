@@ -6,7 +6,12 @@ import { createToken } from './auth.utils';
 
 const register = async (payload: IUser) => {
   const result = await User.create(payload);
-  return result;
+  // return result;
+  return {
+    _id: result._id,
+    name: result.name,
+    email: result.email,
+  };
 };
 
 const login = async (payload: { email: string; password: string }) => {

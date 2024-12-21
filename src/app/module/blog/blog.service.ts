@@ -56,6 +56,21 @@ const deleteBlog = async (blogId: string, authorId: string): Promise<void> => {
   }
 };
 
+// const getBlogs = async (query: Record<string, unknown>) => {
+//   const searchableFields = ['title', 'content'];
+
+//   const blogs = new QueryBuilder(Blog.find(), query)
+//     .search(searchableFields)
+//     .filter()
+//     .sort();
+
+//   const result = await blogs.modelQuery
+//     .populate('author', '_id email role')
+//     .exec();
+
+//   return result;
+// };
+
 const getBlogs = async (query: Record<string, unknown>) => {
   const searchableFields = ['title', 'content'];
 
@@ -64,10 +79,7 @@ const getBlogs = async (query: Record<string, unknown>) => {
     .filter()
     .sort();
 
-  const result = await blogs.modelQuery
-    .populate('author', '_id email role')
-    .exec();
-
+  const result = await blogs.modelQuery;
   return result;
 };
 

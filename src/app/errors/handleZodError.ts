@@ -16,7 +16,8 @@ export const handleZodError = (err: any, res: Response) => {
     statusCode: 400,
     issues: issues,
     error: {
-      details: err.details || 'No additional details available',
+      name: err?.name,
+      // details: err.details || 'No additional details available',
     },
     stack: process.env.NODE_ENV === 'production' ? undefined : err.stack,
   });

@@ -16,7 +16,8 @@ export const handleValidationError = (err: any, res: Response) => {
     statusCode: 400,
     issues: issues,
     error: {
-      details: err.details || 'No additional details available',
+      err,
+      // details: err.details || 'No additional details available',
     },
     stack: process.env.NODE_ENV === 'production' ? undefined : err.stack,
   });

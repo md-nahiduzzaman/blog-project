@@ -8,7 +8,8 @@ export const handleDuplicateError = (err: any, res: Response) => {
     message: err.message || 'An error occurred',
     statusCode: StatusCodes.CONFLICT,
     error: {
-      details: err.details || 'No additional details available',
+      err,
+      // details: err.details || 'No additional details available',
     },
     stack: process.env.NODE_ENV === 'production' ? undefined : err.stack,
   });
