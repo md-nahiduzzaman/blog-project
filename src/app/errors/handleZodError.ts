@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Response } from 'express';
+import { ZodError } from 'zod';
 
-export const handleZodError = (err: any, res: Response) => {
+export const handleZodError = (err: ZodError, res: Response) => {
   const issues = err.issues.map((item: any) => {
     return {
       name: item.message,
@@ -12,13 +13,10 @@ export const handleZodError = (err: any, res: Response) => {
 
   res.status(400).json({
     success: false,
-    message: err.message || 'An error occurred',
+    message: err.message || 'Zod validation failed',
     statusCode: 400,
     issues: issues,
-    error: {
-      name: err?.name,
-      // details: err.details || 'No additional details available',
-    },
+    error: { name: err?.name },
     stack: process.env.NODE_ENV === 'production' ? undefined : err.stack,
   });
 };

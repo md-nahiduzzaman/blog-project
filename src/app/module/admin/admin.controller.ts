@@ -3,6 +3,7 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { adminService } from './admin.service';
 
+// block user controller
 const blockUser = catchAsync(async (req, res) => {
   const { userId } = req.params;
   await adminService.blockUser(userId);
@@ -14,6 +15,7 @@ const blockUser = catchAsync(async (req, res) => {
   });
 });
 
+// delete blog controller
 const deleteBlog = catchAsync(async (req, res) => {
   await adminService.deleteBlog(req.params.id);
 

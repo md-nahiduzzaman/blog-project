@@ -3,6 +3,7 @@ import catchAsync from '../../utils/catchAsync';
 import { blogService } from './blog.service';
 import sendResponse from '../../utils/sendResponse';
 
+// create blog
 const createBlog = catchAsync(async (req, res) => {
   const payload = req.body;
   const author = req.user;
@@ -21,6 +22,7 @@ const createBlog = catchAsync(async (req, res) => {
   });
 });
 
+// update blog
 const updateBlog = catchAsync(async (req, res) => {
   const updateData = req.body;
   const blogId = req.params.id;
@@ -36,6 +38,7 @@ const updateBlog = catchAsync(async (req, res) => {
   });
 });
 
+// delete blog
 const deleteBlog = catchAsync(async (req, res) => {
   const blogId = req.params.id;
   const authorId = req.user._id;
@@ -50,6 +53,7 @@ const deleteBlog = catchAsync(async (req, res) => {
   });
 });
 
+// get blogs with queries
 const getBlogs = catchAsync(async (req, res) => {
   const result = await blogService.getBlogs(req.query);
 

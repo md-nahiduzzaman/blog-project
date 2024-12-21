@@ -26,7 +26,7 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use(globalErrorHandler);
 
-//Not Found
+//Not Found error
 app.use('*', (req: Request, res: Response) => {
   res.status(404).json({
     success: false,

@@ -3,6 +3,7 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { userService } from './user.service';
 
+// create user
 const createUser = catchAsync(async (req, res) => {
   const payload = req.body;
 
@@ -16,6 +17,7 @@ const createUser = catchAsync(async (req, res) => {
   });
 });
 
+// get all user
 const getUser = catchAsync(async (req, res) => {
   const result = await userService.getUser();
 
@@ -27,6 +29,7 @@ const getUser = catchAsync(async (req, res) => {
   });
 });
 
+// get single user by id
 const getSingleUser = catchAsync(async (req, res) => {
   const result = await userService.getSingleUser(req.params.id);
 

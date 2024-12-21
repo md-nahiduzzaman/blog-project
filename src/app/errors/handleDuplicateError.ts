@@ -9,7 +9,6 @@ export const handleDuplicateError = (err: any, res: Response) => {
     statusCode: StatusCodes.CONFLICT,
     error: {
       err,
-      // details: err.details || 'No additional details available',
     },
     stack: process.env.NODE_ENV === 'production' ? undefined : err.stack,
   });

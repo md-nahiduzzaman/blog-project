@@ -6,7 +6,7 @@ import { createToken } from './auth.utils';
 
 const register = async (payload: IUser) => {
   const result = await User.create(payload);
-  // return result;
+
   return {
     _id: result._id,
     name: result.name,
@@ -19,12 +19,13 @@ const login = async (payload: { email: string; password: string }) => {
     '+password',
   );
 
+  // check user
   if (!user) {
     throw new Error('User is not found !');
   }
 
+  // check user block
   const userStatus = user?.isBlocked;
-
   if (userStatus === true) {
     throw new Error('User is blocked');
   }
@@ -38,12 +39,12 @@ const login = async (payload: { email: string; password: string }) => {
     throw new Error('Wrong Password');
   }
 
-  //create token and sent to the  client
   const jwtPayload = {
     email: user?.email,
     role: user?.role,
   };
 
+  //create token
   const token = createToken(
     jwtPayload,
     config.jwt_access_secret as string,

@@ -9,7 +9,6 @@ export const handleGenericError = (err: any, res: Response) => {
     statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
     error: {
       err,
-      // details: err.details || 'No additional details available',
     },
     stack: process.env.NODE_ENV === 'production' ? undefined : err.stack,
   });
